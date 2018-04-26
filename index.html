@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./flexible.js"></script>
+    <script src="./flexible_css.js"></script>
+    <!-- 如果引用flexible_css.js会造成无法对整个页面设置背景色，可以不引用，但不引用出现的问题暂时还不知 -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            margin:0 auto;
+            position: relative;
+            text-align: center;
+            width:800px;
+        }
+        ul{
+            background: rgba(0, 0, 0, 0.3) url(./wifi.png) no-repeat 700px 10px;
+            /* 背景色未知也可以是百分比，也可以是left,center类型 */
+            position: relative;
+            width:800px; 
+            z-index: 1000;
+        }
+        li{
+            display: inline-block;
+            width:150px;
+            font-size: 30px;
+        }
+        span{
+            background: url(./cloud.gif) no-repeat;
+            height:42px;
+            position: absolute;
+            left: 50px;
+            top:0;
+            width: 83px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>百度首页</li>
+            <li>搜狐首页</li>
+            <li>腾讯首页</li>
+            <li>阿里首页</li>
+            <li>小米首页</li>
+        </ul>
+        <span></span>
+    </div>
+    <script src="./jquery-1.12.0.min.js"></script>
+    <script>
+        window.onload=function(){
+            var count=0;//计数器；
+            $('li').each(function(index,item){
+                $(item).mouseenter(function(){
+                    $('span').animate({left:50+150*index},100)
+                });
+                $('ul').mouseleave(function(){
+                    $('span').animate({left:50+150*count},100)
+                })
+                $(item).click(function(){
+                    count=index;
+                    $('span').animate({left:50+150*index},100);
+                })
+            });
+        }
+    </script>
+</body>
+</html>   
