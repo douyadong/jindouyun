@@ -7,11 +7,16 @@
     <title>Document</title>
     <script src="./flexible.js"></script>
     <script src="./flexible_css.js"></script>
-    <!-- 如果引用flexible_css.js会造成无法对整个页面设置背景色，可以不引用，但不引用出现的问题暂时还不知 -->
     <style>
         *{
             margin:0;
             padding:0;
+        }
+        html,body{
+            height:100%;
+        }
+        body{
+            background-color: pink;
         }
         div{
             margin:0 auto;
